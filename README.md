@@ -1,16 +1,77 @@
-# React + Vite
+# ⚡ Voltex Tech Store
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, fully responsive e-commerce product page built with React. This project demonstrates real-world React concepts including component architecture, state management, routing, and context API.
 
-Currently, two official plugins are available:
+## 📸 Screenshots
+![Voltex Store](./public/screenshot.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🛠️ Built With
+- **React 18** - UI library
+- **Vite** - Build tool
+- **React Router DOM** - Client-side routing
+- **Context API + useReducer** - Global cart state management
+- **CSS-in-JS** - Inline styles with JavaScript objects
 
-## React Compiler
+## ✨ Features
+- 🏠 Home page with product grid organised by category
+- 🛍️ Product detail page with image gallery and colour variants
+- 🛒 Slide-in cart drawer with real-time updates
+- ➕ Add to cart with quantity selector
+- 🎨 Colour variant switcher with live image change
+- 📋 Accordion for specs, features and shipping info
+- 🔗 Full client-side routing (Home, Products, About)
+- 📱 Responsive layout
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 📦 Product Catalog
+- Wireless Headphones (Voltex ProSound X1)
+- Laptops (Apple, Dell, Lenovo, ASUS, HP, Acer)
+- Smartwatches (Apple, Samsung)
 
-## Expanding the ESLint configuration
+## 🗂️ Project Structure
+src/
+├── components/
+│   ├── Navbar.jsx
+│   ├── HomePage.jsx
+│   ├── ProductCard.jsx
+│   ├── ProductPage.jsx
+│   ├── ImageGallery.jsx
+│   ├── ProductInfo.jsx
+│   ├── ProductSpecs.jsx
+│   ├── CartDrawer.jsx
+│   └── AboutPage.jsx
+├── context/
+│   └── CartContext.jsx
+├── data/
+│   └── product.js
+└── App.jsx
+## 💡 Key React Concepts Used
+| Concept | Where Used |
+|---|---|
+| `useState` | Color selection, cart drawer, quantity |
+| `useReducer` | Cart state management |
+| `useContext` | Accessing cart from any component |
+| `useParams` | Getting product ID from URL |
+| `useNavigate` | Programmatic navigation |
+| Component Props | Passing data between components |
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🚀 Getting Started
+
+```bash
+# Clone the repo
+git clone https://github.com/97chopra/tech-store.git
+
+# Navigate to project
+cd tech-store
+
+# Install dependencies
+npm install
+
+# Run development server
+npm run dev
+```
+
+## 👩‍💻 Author
+**Aarti Chopra**  
+Final Year Student - Software Programming & Data Science in AI  
+Auckland University of Technology (AUT)  
+[GitHub](https://github.com/97chopra)
