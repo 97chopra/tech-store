@@ -1,13 +1,28 @@
-
+import { useState } from 'react'
 import Navbar from './components/Navbar'
 import ImageGallery from './components/ImageGallery'
+import ProductInfo from './components/ProductInfo'
 import product from './data/product'
- function App(){
-  return(
+
+function App() {
+  const [selectedColor, setSelectedColor] = useState("Midnight Black")
+
+  return (
     <div>
-      <h1>Voltex Store</h1>
+      <Navbar />
+      <div style={styles.container}>
+        <div style={styles.grid}>
+          <ImageGallery images={product.images[selectedColor]} />
+          <ProductInfo product={product} onColorChange={setSelectedColor} />
+        </div>
+      </div>
     </div>
   )
- }
+}
 
- export default App
+const styles = {
+  container: { maxWidth: "1200px", margin: "40px auto", padding: "0 24px" },
+  grid: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: "48px", alignItems: "start" },
+}
+
+export default App
