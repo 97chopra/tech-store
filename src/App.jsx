@@ -1,38 +1,23 @@
-import { useState } from 'react'
-import Navbar from './components/Navbar'
-import ImageGallery from './components/ImageGallery'
-import ProductInfo from './components/ProductInfo'
-import ProductSpecs from './components/ProductSpecs'
-import CartDrawer from './components/CartDrawer'
-import product from './data/product'
+import { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import HomePage from "./components/HomePage";
+import ProductPage from "./components/ProductPage";
+import CartDrawer from "./components/CartDrawer";
 
 function App() {
-  const [selectedColor, setSelectedColor] = useState("Midnight Black")
-  const [cartOpen, setCartOpen] = useState(false)
+  const [cartOpen, setCartOpen] = useState(false);
 
   return (
-    <div>
+    <BrowserRouter>
       <Navbar onCartClick={() => setCartOpen(true)} />
-      <div style={styles.container}>
-        <div style={styles.grid}>
-          <ImageGallery images={product.images[selectedColor]} />
-          <ProductInfo
-            product={product}
-            onColorChange={setSelectedColor}
-            selectedColor={selectedColor}
-            onCartOpen={() => setCartOpen(true)}
-          />
-        </div>
-        <ProductSpecs specs={product.specs} features={product.features} />
-      </div>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/product/:id" element={<ProductPage onCartOpen={() => setCartOpen(true)} />} />
+      </Routes>
       <CartDrawer isOpen={cartOpen} onClose={() => setCartOpen(false)} />
-    </div>
-  )
+    </BrowserRouter>
+  );
 }
 
-const styles = {
-  container: { maxWidth: "1200px", margin: "40px auto", padding: "0 24px" },
-  grid: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: "48px", alignItems: "start" },
-}
-
-export default App
+export default App;
