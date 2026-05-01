@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import HomePage from "./components/HomePage";
 import ProductPage from "./components/ProductPage";
 import CartDrawer from "./components/CartDrawer";
+import AboutPage from "./components/AboutPage";
 
 <Routes>
   <Route path="/" element={<HomePage />} />
