@@ -1,50 +1,54 @@
-import {useState} from "react";
+import { useCart } from "../context/CartContext";
 
-function Navbar() {
-    const [ cartCount, setCartCount] = useState(0);
-    return(
-        <nav style={StyleSheet.nav}>
-            <div style={StyleSheet.container}>
-                {/* Logo */}
-                <div styles={styles.logo}>⚡Voltex </div>
-                {/* Nav Links */}
-                <ul style={style.navLinks}>
-                    <li>Home</li>
-                    <li>Products</li>
-                    <li>About</li>
-                </ul>
-                {/* Cart Icon */}
-                <div style={styles.cartWrapper} onClick={onCartClick}>
-                  🛒
-                <span style={styles.cartBadge}>{totalItems}</span> 
-                </div>
-            </div>
-        </nav>
-    );
+function Navbar({ onCartClick }) {
+  const { totalItems } = useCart();
+
+  return (
+    <nav style={styles.nav}>
+      <div style={styles.container}>
+        {/* Logo */}
+        <div style={styles.logo}>⚡ Voltex</div>
+
+        {/* Nav Links */}
+        <ul style={styles.navLinks}>
+          <li>Home</li>
+          <li>Products</li>
+          <li>About</li>
+        </ul>
+
+        {/* Cart Icon */}
+        <div style={styles.cartWrapper} onClick={onCartClick}>
+          🛒
+          <span style={styles.cartBadge}>{totalItems}</span>
+        </div>
+      </div>
+    </nav>
+  );
 }
- const styles = {
-    nav: {
-        backgroundColor: "#0f0f0f",
-        padding: "16px 0",
-        position: "sticky",
-        top: 0,
-        zindex: 1000,
-    },
-    container: {
-        maxWidth: "1200px",
-        margin: "0 auto",
-        padding: "0 24px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-    },
-    logo: {
+
+const styles = {
+  nav: {
+    backgroundColor: "#0f0f0f",
+    padding: "16px 0",
+    position: "sticky",
+    top: 0,
+    zIndex: 100,
+  },
+  container: {
+    maxWidth: "1200px",
+    margin: "0 auto",
+    padding: "0 24px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  logo: {
     color: "#fff",
     fontSize: "24px",
     fontWeight: "bold",
     letterSpacing: "1px",
-    },
-     navLinks: {
+  },
+  navLinks: {
     display: "flex",
     gap: "32px",
     listStyle: "none",
@@ -75,6 +79,3 @@ function Navbar() {
 };
 
 export default Navbar;
-
-
- 
