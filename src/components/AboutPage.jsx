@@ -120,7 +120,7 @@ function AboutPage() {
 }
 
 const styles = {
-  wrapper: { maxWidth: "1100px", margin: "0 auto", padding: "0 24px 60px" },
+wrapper: { maxWidth: "1100px", margin: "0 auto", padding: "0 24px 60px", minHeight: "100vh" },
   hero: { textAlign: "center", padding: "60px 0 48px" },
   heroTitle: { fontSize: "42px", fontWeight: "800", color: "#0f0f0f", margin: "0 0 12px" },
   heroSub: { fontSize: "18px", color: "#888", margin: 0 },
