@@ -9,10 +9,8 @@ const handleColorChange = (color) => {
 };
     const[quantity, setQuantity] = useState(1);
     const [added, setAdded] = useState(false);
-    const handleColourChange = (color) => {
-        setSelectedColor(color);
-        onColorChange(color.name);
-    };
+    
+    
 
     const handleAddToCart = () => {
         addToCart({
