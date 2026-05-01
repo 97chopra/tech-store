@@ -1,19 +1,18 @@
-import { useState} from "react";
+import { useState } from "react";
 import { useCart } from "../context/CartContext";
 
-function ProductInfo({ product, onColorChange, selectedColor, onCartOpen  }) {
-    
-    
-const handleColorChange = (color) => {
-  onColorChange(color.name);
-};
-    const[quantity, setQuantity] = useState(1);
-    const [added, setAdded] = useState(false);
-    
-    
+function ProductInfo({ product, onColorChange, selectedColor, onCartOpen }) {
+  const { addToCart } = useCart();
 
-    const handleAddToCart = () => {
-        addToCart({
+  const [quantity, setQuantity] = useState(1);
+  const [added, setAdded] = useState(false);
+
+  const handleColorChange = (color) => {
+    onColorChange(color.name);
+  };
+
+  const handleAddToCart = () => {
+    addToCart({
       id: product.id,
       name: product.name,
       price: product.price,
@@ -23,23 +22,23 @@ const handleColorChange = (color) => {
     });
     setAdded(true);
     setTimeout(() => setAdded(false), 2000);
-    };
+  };
 
-    return(
-      <div style = {StyleSheet.wrapper}>
-        {/* Brand & Category */}
-        <p style={styles.brand}>{product.brand} · {product.category}</p>
+  return (
+    <div style={styles.wrapper}>
+      {/* Brand & Category */}
+      <p style={styles.brand}>{product.brand} · {product.category}</p>
 
-        {/* Name */}
-         <h1 style={styles.name}>{product.name}</h1>
+      {/* Name */}
+      <h1 style={styles.name}>{product.name}</h1>
 
-         {/* Rating */}
-         <div style={styles.ratingRow}>
+      {/* Rating */}
+      <div style={styles.ratingRow}>
         <span style={styles.stars}>{"★".repeat(Math.floor(product.rating))}{"☆".repeat(5 - Math.floor(product.rating))}</span>
         <span style={styles.reviewCount}>{product.rating} ({product.reviewCount} reviews)</span>
       </div>
 
-       {/* Price */}
+      {/* Price */}
       <div style={styles.priceRow}>
         <span style={styles.price}>${product.price}</span>
         <span style={styles.originalPrice}>${product.originalPrice}</span>
@@ -47,34 +46,36 @@ const handleColorChange = (color) => {
       </div>
 
       {/* Color Selector */}
-      <div style = {styles.section}>
-        <p style = {styles.label}>Color: <strong> {selectedColor.name} </strong></p>
-        <div style={styles.colorRaw}>
-            {product.colors.map((color) => (
-                <button
-                    key={color.id}
-                    onClick={() => handleColorChange(color)}
-                    style={{
-                        ...styles.colorButton,
-                        backgroundColor: color.hex,
-                       border: selectedColor.id === color.id
+      <div style={styles.section}>
+        <p style={styles.label}>Color: <strong>{selectedColor}</strong></p>
+        <div style={styles.colorRow}>
+          {product.colors.map((color) => (
+            <div
+              key={color.id}
+              onClick={() => handleColorChange(color)}
+              style={{
+                ...styles.colorCircle,
+                backgroundColor: color.hex,
+                border: selectedColor === color.name
                   ? "3px solid #e63946"
                   : "3px solid transparent",
                 outline: "2px solid #ccc",
-                    }}
-                    />
-            ))}
+              }}
+            />
+          ))}
         </div>
       </div>
-       {/*Quantity */}
+
+      {/* Quantity */}
       <div style={styles.section}>
-       <p style={styles.label}>Quantity</p>
+        <p style={styles.label}>Quantity</p>
         <div style={styles.quantityRow}>
           <button style={styles.qtyBtn} onClick={() => setQuantity(q => Math.max(1, q - 1))}>−</button>
           <span style={styles.qtyNum}>{quantity}</span>
           <button style={styles.qtyBtn} onClick={() => setQuantity(q => q + 1)}>+</button>
-        </div> 
+        </div>
       </div>
+
       {/* Add to Cart Button */}
       <button
         style={{
@@ -85,12 +86,13 @@ const handleColorChange = (color) => {
       >
         {added ? "✓ Added to Cart!" : "Add to Cart"}
       </button>
+
       {/* Description */}
       <p style={styles.description}>{product.description}</p>
     </div>
   );
-
 }
+
 const styles = {
   wrapper: { display: "flex", flexDirection: "column", gap: "16px" },
   brand: { color: "#888", fontSize: "14px", margin: 0 },
@@ -114,4 +116,3 @@ const styles = {
 };
 
 export default ProductInfo;
-      
