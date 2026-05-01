@@ -5,6 +5,13 @@ import HomePage from "./components/HomePage";
 import ProductPage from "./components/ProductPage";
 import CartDrawer from "./components/CartDrawer";
 
+<Routes>
+  <Route path="/" element={<HomePage />} />
+  <Route path="/products" element={<HomePage />} />
+  <Route path="/product/:id" element={<ProductPage onCartOpen={() => setCartOpen(true)} />} />
+  <Route path="/about" element={<AboutPage />} />
+</Routes>
+
 function App() {
   const [cartOpen, setCartOpen] = useState(false);
 
