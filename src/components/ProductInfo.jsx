@@ -2,7 +2,11 @@ import { useState} from "react";
 import { useCart } from "../context/CartContext";
 
 function ProductInfo({ product, onColorChange, selectedColor, onCartOpen  }) {
-    const[selectedColor, setSelctedColour] = useState(product.colours[0]);
+    
+    
+const handleColorChange = (color) => {
+  onColorChange(color.name);
+};
     const[quantity, setQuantity] = useState(1);
     const [added, setAdded] = useState(false);
     const handleColourChange = (color) => {
