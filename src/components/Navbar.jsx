@@ -1,7 +1,9 @@
 import { useCart } from "../context/CartContext";
+import { useNavigate } from "react-router-dom";
 
 function Navbar({ onCartClick }) {
   const { totalItems } = useCart();
+  const navigate = useNavigate();
 
   return (
     <nav style={styles.nav}>
@@ -11,9 +13,9 @@ function Navbar({ onCartClick }) {
 
         {/* Nav Links */}
         <ul style={styles.navLinks}>
-          <li>Home</li>
-          <li>Products</li>
-          <li>About</li>
+          <li onClick={() => navigate("/")}>Home</li>
+          <li onClick={() => navigate("/products")}>Products</li>
+          <li onClick={() => navigate("/about")}>About</li>
         </ul>
 
         {/* Cart Icon */}
