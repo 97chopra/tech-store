@@ -6,13 +6,6 @@ import ProductPage from "./components/ProductPage";
 import CartDrawer from "./components/CartDrawer";
 import AboutPage from "./components/AboutPage";
 
-<Routes>
-  <Route path="/" element={<HomePage />} />
-  <Route path="/products" element={<HomePage />} />
-  <Route path="/product/:id" element={<ProductPage onCartOpen={() => setCartOpen(true)} />} />
-  <Route path="/about" element={<AboutPage />} />
-</Routes>
-
 function App() {
   const [cartOpen, setCartOpen] = useState(false);
 
@@ -21,7 +14,9 @@ function App() {
       <Navbar onCartClick={() => setCartOpen(true)} />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/products" element={<HomePage />} />
         <Route path="/product/:id" element={<ProductPage onCartOpen={() => setCartOpen(true)} />} />
+        <Route path="/about" element={<AboutPage />} />
       </Routes>
       <CartDrawer isOpen={cartOpen} onClose={() => setCartOpen(false)} />
     </BrowserRouter>
