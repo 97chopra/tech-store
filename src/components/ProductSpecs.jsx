@@ -2,6 +2,7 @@ import { useState } from "react";
 
 function ProductSpecs({ specs, features }) {
   const [openSection, setOpenSection] = useState("specs");
+  const { addToCart } = useCart();
 
   const toggle = (section) => {
     setOpenSection(openSection === section ? null : section);

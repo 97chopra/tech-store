@@ -1,6 +1,7 @@
 import { useState} from "react";
+import { useCart } from "../context/CartContext";
 
-function ProductInfo({ product, onColorChange }) {
+function ProductInfo({ product, onColorChange, selectedColor, onCartOpen  }) {
     const[selectedColor, setSelctedColour] = useState(product.colours[0]);
     const[quantity, setQuantity] = useState(1);
     const [added, setAdded] = useState(false);
@@ -10,10 +11,16 @@ function ProductInfo({ product, onColorChange }) {
     };
 
     const handleAddToCart = () => {
-        setAdded(true);
-        setTimeout(() => {
-            setAdded(false);
-        }, 2000);
+        addToCart({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      color: selectedColor,
+      quantity: quantity,
+      image: product.images[selectedColor][0],
+    });
+    setAdded(true);
+    setTimeout(() => setAdded(false), 2000);
     };
 
     return(
