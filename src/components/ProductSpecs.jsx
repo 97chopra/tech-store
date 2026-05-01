@@ -2,7 +2,6 @@ import { useState } from "react";
 
 function ProductSpecs({ specs, features }) {
   const [openSection, setOpenSection] = useState("specs");
-  const { addToCart } = useCart();
 
   const toggle = (section) => {
     setOpenSection(openSection === section ? null : section);
@@ -13,23 +12,17 @@ function ProductSpecs({ specs, features }) {
 
       {/* Specs Accordion */}
       <div style={styles.accordion}>
-        <button
-          style={styles.accordionHeader}
-          onClick={() => toggle("specs")}
-        >
+        <button style={styles.accordionHeader} onClick={() => toggle("specs")}>
           <span>Technical Specifications</span>
           <span>{openSection === "specs" ? "−" : "+"}</span>
         </button>
         {openSection === "specs" && (
           <div style={styles.accordionBody}>
             {specs.map((spec, index) => (
-              <div
-                key={index}
-                style={{
-                  ...styles.specRow,
-                  backgroundColor: index % 2 === 0 ? "#f9f9f9" : "#fff",
-                }}
-              >
+              <div key={index} style={{
+                ...styles.specRow,
+                backgroundColor: index % 2 === 0 ? "#f9f9f9" : "#fff",
+              }}>
                 <span style={styles.specLabel}>{spec.label}</span>
                 <span style={styles.specValue}>{spec.value}</span>
               </div>
@@ -40,10 +33,7 @@ function ProductSpecs({ specs, features }) {
 
       {/* Features Accordion */}
       <div style={styles.accordion}>
-        <button
-          style={styles.accordionHeader}
-          onClick={() => toggle("features")}
-        >
+        <button style={styles.accordionHeader} onClick={() => toggle("features")}>
           <span>Key Features</span>
           <span>{openSection === "features" ? "−" : "+"}</span>
         </button>
@@ -61,10 +51,7 @@ function ProductSpecs({ specs, features }) {
 
       {/* Shipping Accordion */}
       <div style={styles.accordion}>
-        <button
-          style={styles.accordionHeader}
-          onClick={() => toggle("shipping")}
-        >
+        <button style={styles.accordionHeader} onClick={() => toggle("shipping")}>
           <span>Shipping & Returns</span>
           <span>{openSection === "shipping" ? "−" : "+"}</span>
         </button>
