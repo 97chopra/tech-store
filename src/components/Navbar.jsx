@@ -14,9 +14,9 @@ function Navbar() {
                     <li>About</li>
                 </ul>
                 {/* Cart Icon */}
-                <div style={styles.cartWrapper}>
+                <div style={styles.cartWrapper} onClick={onCartClick}>
                   🛒
-                  <span style={styles.cartBadge}>{cartCount}</span>  
+                <span style={styles.cartBadge}>{totalItems}</span> 
                 </div>
             </div>
         </nav>
