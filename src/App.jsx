@@ -1,5 +1,7 @@
 
 import Navbar from './components/Navbar'
+import ImageGallery from './components/ImageGallery'
+import product from './data/product'
  function App(){
   return(
     <div>
